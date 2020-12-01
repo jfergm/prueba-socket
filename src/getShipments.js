@@ -9,7 +9,7 @@ const getShipments = async () => {
   try {
     const data = await axios({
       method: 'get',
-      url: `http://${process.env.QUERY_ENDPOINT}/guide/${month - 1}/${year}`,
+      url: `http://${process.env.QUERY_ENDPOINT}/guide/${month}/${year}`,
       headers: {
         'Authorization': `Bearer ${process.env.API_KEY}`
       }
