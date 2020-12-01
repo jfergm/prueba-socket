@@ -59,7 +59,6 @@
       dateElement.innerText = `${date.getMonth() + 1} / ${date.getFullYear()}`
       socket.on('counter', (counter) => {
         counterElement.innerText = counter
-        console.log(counter, counterElement);
       });
     </script>
   </body>
