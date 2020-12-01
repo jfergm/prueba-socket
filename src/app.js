@@ -5,6 +5,8 @@ import dotEnv from 'dotenv';
 
 import {countShipments} from './getShipments';
 
+import cors from 'cors';
+
 
 dotEnv.config();
 
@@ -33,7 +35,7 @@ app.get('/', (req, res) => {
   res.sendFile(__dirname + '/index.html');
 });
 
-app.post('/webhook/shipments', ({res}) => {
+app.post('/webhook/shipments', cors(), ({res}) => {
   io.emit('counter', ++counter);
 
   res.status(200).send();
