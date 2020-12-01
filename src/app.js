@@ -31,8 +31,11 @@ const io = socketio(httpServer);
 
 (() => {
   setInterval(async () => {
-    counter = await countShipments();
-    io.emit('counter', counter)
+    const newCounter = await countShipments();
+    if(newCounter != counter) {
+      counter = newCounter
+      io.emit('counter', counter)
+    }
   }, 1500);
 })()
 
