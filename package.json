@@ -1,0 +1,24 @@
+{
+  "name": "examen-envia",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ./dist/app.js",
+    "build": "babel src -d dist",
+    "start:dev": "nodemon --exec babel-node ./src/app.js"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "@babel/runtime": "^7.12.1",
+    "axios": "^0.21.0",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "socket.io": "^3.0.3"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.12.1",
+    "@babel/core": "^7.12.3",
+    "@babel/node": "^7.12.1",
+    "@babel/preset-env": "^7.12.7"
+  }
+}

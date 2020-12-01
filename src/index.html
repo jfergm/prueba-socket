@@ -1,0 +1,67 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Counter</title>
+    <style>
+      .box {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 85vh;
+        flex-direction: column;
+      }
+      .circle-item {
+        height: 225px;
+        width: 225px;
+        padding: 8px;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 50px;
+      }
+      .circle-area {
+        background-color: #1c6b8a;
+        height: 100%;
+        width: 100%;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #fff;
+        border: 2px solid #fff;
+      }
+      .count-number {
+        font-size: 4em;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="box">
+      <h1 class>Counter:</h1>
+      <div class="circle-item">
+        <div class="circle-area">
+          <div class="counter-area">
+            <span class="count-number" id="counter"></span>
+          </div>
+        </div>
+      </div>
+      <h5>
+        This month <span id="date"></span>
+      </h5>
+    </main>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+      const socket = io();
+      const counterElement = document.getElementById('counter');
+      const dateElement = document.getElementById('date')
+      const date = new Date();
+      dateElement.innerText = `${date.getMonth() + 1} / ${date.getFullYear()}`
+      socket.on('counter', (counter) => {
+        counterElement.innerText = counter
+        console.log(counter, counterElement);
+      });
+    </script>
+  </body>
+  
+</html>
