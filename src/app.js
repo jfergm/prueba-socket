@@ -29,6 +29,13 @@ const io = socketio(httpServer);
   io.emit('counter', counter)
 })();
 
+(() => {
+  setInterval(async () => {
+    counter = await countShipments();
+    io.emit('counter', counter)
+  }, 1500);
+})()
+
 io.on('connection', (socket) => {
   io.emit('counter', counter)
 });
@@ -37,8 +44,8 @@ app.get('/', (req, res) => {
   res.sendFile(__dirname + '/index.html');
 });
 
-app.post('/webhook/shipments', ({res}) => {
+/* app.post('/webhook/shipments', ({res}) => {
   io.emit('counter', ++counter);
 
   res.status(200).send();
-})
+})*/
