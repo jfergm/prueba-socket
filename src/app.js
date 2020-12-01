@@ -12,6 +12,8 @@ dotEnv.config();
 
 const app = express();
 
+app.use(cors());
+
 const PORT = process.env.PORT || 4000;
 let counter = 0;
 
@@ -35,7 +37,7 @@ app.get('/', (req, res) => {
   res.sendFile(__dirname + '/index.html');
 });
 
-app.post('/webhook/shipments', cors(), ({res}) => {
+app.post('/webhook/shipments', ({res}) => {
   io.emit('counter', ++counter);
 
   res.status(200).send();
